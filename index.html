@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Jusaina</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .phone-screen {
+            background: #2c2c2e;
+            width: 90%;
+            max-width: 350px;
+            height: 80vh;
+            border-radius: 40px;
+            border: 8px solid #3a3a3c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .content { transition: all 0.4s ease; }
+        .hidden { display: none; }
+        
+        h1 { font-size: 1.5rem; margin-bottom: 10px; color: #ff375f; }
+        p { font-size: 1rem; color: #ebebf5; line-height: 1.4; }
+
+        .btn-main {
+            background: #ff375f;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #no-btn {
+            background: transparent;
+            color: #ff375f;
+            border: 2px solid #ff375f;
+            position: absolute;
+            transition: 0.1s;
+        }
+
+        .heart { font-size: 40px; margin-bottom: 20px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    </style>
+</head>
+<body>
+
+    <div class="phone-screen">
+        <div id="step1" class="content">
+            <div class="heart">✨</div>
+            <h1>Hey Jusaina...</h1>
+            <p>I know you're busy on your phone, but I made something just for you.</p>
+            <button class="btn-main" onclick="showStep(2)">Wait, what?</button>
+        </div>
+
+        <div id="step2" class="content hidden">
+            <h1>I'll be honest...</h1>
+            <p>I know I might not be your favorite person right now, but I think you're pretty cool.</p>
+            <button class="btn-main" onclick="showStep(3)">Keep going...</button>
+        </div>
+
+        <div id="step3" class="content hidden">
+            <h1>Remember!!</h1>
+            <p>You know what u are the cool person i have ever met. 🌝
+wanna keep going?</p>
+            <div style="margin-top: 50px;">
+                <button class="btn-main" onclick="showStep(4)">Okay, fine.</button>
+                <button class="btn-main" id="no-btn" onmouseover="moveButton()">Hell nahh.</button>
+            </div>
+        </div>
+
+        <div id="step4" class="content hidden">
+            <div class="heart">❤️</div>
+            <h1>Smart choice!</h1>
+            <p>thats all, and i wont ever be her anymore am stopping snapchat so thats all i have to say. I will miss you 🌝 </p>
+        </div>
+    </div>
+
+    <script>
+        function showStep(num) {
+            document.querySelectorAll('.content').forEach(div => div.classList.add('hidden'));
+            document.getElementById('step' + num).classList.remove('hidden');
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('no-btn');
+            const screen = document.querySelector('.phone-screen');
+            
+            // Stay within the phone screen boundaries
+            const maxX = screen.clientWidth - btn.clientWidth - 40;
+            const maxY = screen.clientHeight - btn.clientHeight - 40;
+            
+            btn.style.left = Math.random() * maxX + 'px';
+            btn.style.top = Math.random() * maxY + 'px';
+        }
+    </script>
+</body>
+</html>
